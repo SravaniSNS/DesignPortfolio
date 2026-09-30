@@ -1,5 +1,8 @@
 import './App.css'
 import Beacon from './beacon'
+import Wibi from './wibi'
+import Reframe from './reframe'
+import Curio from './curio'
 import { Routes, Route, Link } from 'react-router-dom'
 
 const projects = [
@@ -15,49 +18,58 @@ const projects = [
     'Cities are full of people, but the infrastructure for actually connecting with them is harder to find.',
   idea:
     'Small recurring crews of 3–5 people, with guided sessions that let connection build gradually.',
-  image: '/beaconHeroImg.jpg',
+  image: '/beaconHero.png',
   link: '/beacon',
 
   },
 
   {
-    number: '02',
-    year: '2026',
-    type: 'UX RESEARCH · UX DESIGN',
-    title: 'Event-based dating',
-    subtitle: 'Activities × relationships × trust',
-    question: 'What if the activity came before the profile?',
-    problem: '',
-    idea: '',
-    image: '/hero-placeholder.png',
-    link: '#',
-  },
+  number: '02',
+  year: '2026',
+  type: 'UX RESEARCH · SERVICE DESIGN',
+  title: 'WIBI',
+  subtitle: 'Activities × relationships × trust',
+  question:
+    'What if dating started with something you wanted to do, rather than someone you wanted to swipe on?',
+  problem:
+    'Dating apps make it easy to encounter profiles, but research revealed recurring gaps around trust, emotional fatigue and turning matches into meaningful real-world interaction.',
+  idea:
+    'WIBI shifts discovery from profiles to shared activities and events — using context, progressive trust and lower-pressure interaction to help connection develop around experience.',
+  image: '/wibiHero.png',
+  link: '/wibi',
+},
 
   {
-    number: '03',
-    year: '2026',
-    type: 'UX RESEARCH · UX DESIGN',
-    title: 'Learning platform',
-    subtitle: 'Learning × confidence × experience',
-    question: "What if learning didn't feel like starting over?",
-    problem: '',
-    idea: '',
-    image: '/hero-placeholder.png',
-    link: '#',
-  },
+  number: '03',
+  year: '2026',
+  type: 'UX DESIGN · PRODUCT DESIGN',
+  title: 'Reframe',
+  subtitle: 'Reskilling × experience × career transition',
+  question:
+    "What if career change didn't mean starting over?",
+  problem:
+    'Mid-career professionals may need to adapt to changing roles and skills, while already carrying years of professional experience.',
+  idea:
+    'Reframe supports career reskilling through personalised learning paths, skill exploration and progress that builds on the learner’s existing professional context.',
+  image: '/reframeHero.png',
+  link: '/reframe',
+},
 
   {
-    number: '04',
-    year: '2026',
-    type: 'AI × UX DESIGN',
-    title: 'Curio',
-    subtitle: 'AI × curiosity × agency',
-    question: 'What if curiosity could be guided without being controlled?',
-    problem: '',
-    idea: '',
-    image: '/hero-placeholder.png',
-    link: '#',
-  },
+  number: '04',
+  year: '2026',
+  type: 'AI × UX · INTERACTION DESIGN',
+  title: 'Curio',
+  subtitle: 'Context × curiosity × agency',
+  question:
+    "What if curiosity didn't have to start with a search?",
+  problem:
+    'Interesting things surround us constantly, but exploring them often requires noticing a question, knowing what to search for and deliberately pursuing it.',
+  idea:
+    'Curio is a contextual curiosity layer that uses signals from the user, their situation and the world around them to surface possibilities — while leaving the choice to explore with the person.',
+  image: '/curioHero.png',
+  link: '/curio',
+},
 ]
 
 const worlds = [
@@ -149,8 +161,8 @@ function Home() {
       <nav className="reference-nav">
         <a href="#top" className="reference-logo"> SRAVANI</a>
         <div className="nav-links">
-          <a className="active" href="#work">Work</a>
-          <a href="#notes">Field Notes</a>
+          <a href="#work">Work</a>
+          {/* <a href="#notes">Field Notes</a> */}
           {/* <a href="#worlds">Other Worlds</a> */}
           <a href="#about">About</a>
         </div>
@@ -159,19 +171,35 @@ function Home() {
       <section id="top" className="reference-hero">
         <div className="hero-room-glow" />
         <div className="hero-copy-reference">
-          <span className="hero-kicker">UX DESIGNER · OBSERVER · OCCASIONAL WANDERER</span>
-          <h1>I like figuring out<br />why things feel<br />the way they do.</h1>
-          <p className="hero-role">UX DESIGNER <span>·</span> ENGINEER <span>·</span> CURIOUS MIND</p>
-          <div className="hero-actions">
-            <a className="glow-button" href="#work">Scroll to See selected work <span>→</span></a>
-            {/* <a className="outline-button" href="#worlds">Enter the sky</a> */}
-          </div>
-        </div>
+
+  <span className="hero-kicker">
+    UX / INTERACTION DESIGNER · CSE BACKGROUND
+  </span>
+
+  <h1>
+    I look for the invisible
+    <br />
+    systems shaping experience.
+  </h1>
+
+  <p className="hero-description">
+   I’m interested in the systems, behaviours and stories
+
+
+    <br />
+    hiding underneath everyday experiences.
+  </p>
+
+  <a className="hero-work-link" href="#work">
+    SELECTED WORK <span>↓</span>
+  </a>
+
+</div>
 
         <div className="hero-art">
           <img src="/hero-placeholder.png" alt="Abstract purple night-time world made of interfaces, systems and small worlds" />
-          <span className="hero-note note-one">Same sky,<br />different<br />worlds.</span>
-          <span className="hero-note note-two">small things<br />matter </span>
+          {/* <span className="hero-note note-one">Same sky,<br />different<br />worlds.</span>
+          <span className="hero-note note-two">small things<br />matter </span> */}
           <span className="hero-cat">⌁</span>
         </div>
       </section>
@@ -240,7 +268,7 @@ function Home() {
         <p className="worlds-footer">Collecting little pieces of joy s</p>
       </section> */}
 
-      <section id="notes" className="reference-panel notes-panel">
+      {/* <section id="notes" className="reference-panel notes-panel">
         <div className="panel-heading">
           <h2>Field Notes</h2>
           <span className="heading-line" />
@@ -250,31 +278,80 @@ function Home() {
           <article><span>08.17.26</span><h3>Things I noticed while walking through Bangalore</h3><p>People, signs, shortcuts, rituals and tiny behaviours worth designing around.</p></article>
           <article><span>07.02.26</span><h3>What makes an interaction feel trustworthy?</h3><p>A running collection of patterns, questions and things I keep returning to.</p></article>
         </div>
-      </section>
+      </section> */}
 
       <section id="about" className="reference-panel about-panel">
-        <div className="about-image">
-          <img src="/hero-placeholder.png" alt="Abstract portrait placeholder" />
-        </div>
-        <div className="about-copy">
-          <h2>Hi, I'm Sravani.</h2>
-          <p>I'm a designer, a curious mind, and a little bit of chaos enjoyer. I find beauty in small moments, odd ideas and people who feel deeply.</p>
-          <p>I make things that help people understand, explore, connect or simply feel a little more human.</p>
-          <div className="about-values">
-            <span>Curiosity<small>people, stories, possibilities</small></span>
-            <span>Authenticity<small>real over perfect</small></span>
-            <span>Independence<small>my own path</small></span>
-            <span>Kindness<small>to others & to self</small></span>
-          </div>
-          <div className="about-meta">Bangalore <span>·</span> MDes 2nd year <span>·</span> Open to internships</div>
-          <div className="about-actions">
-            <a className="glow-button" href="mailto:hello@example.com">Let's connect <span>→</span></a>
-            <a href="mailto:hello@example.com">✉ Email</a>
-            <a href="#about">in LinkedIn</a>
-            <a href="#about">◎ Instagram</a>
-          </div>
-        </div>
-      </section>
+  <div className="about-visual">
+    <img
+      src="/aboutHero.png"
+      alt="A collection of sketches, observations and things that inspire my work"
+    />
+    <span className="about-visual-note">things I notice →</span>
+  </div>
+
+  <div className="about-copy">
+    <span className="about-eyebrow">ABOUT / 05</span>
+
+    <h2>Hi, I'm Sravani.</h2>
+
+    <p className="about-intro">
+      I'm a UX and interaction designer with a background in computer science.
+      I'm curious about the systems underneath everyday experiences — how
+      people behave, what shapes their choices, and how technology quietly
+      changes the way we interact.
+    </p>
+
+    <p>
+      I like turning those questions into products, interactions and
+      experiments that help people understand, explore and connect.
+    </p>
+
+    <div className="about-values">
+      <span>
+        Curiosity
+        <small>people, stories, possibilities</small>
+      </span>
+
+      <span>
+        Authenticity
+        <small>real over perfect</small>
+      </span>
+
+      <span>
+        Independence
+        <small>my own path</small>
+      </span>
+
+      <span>
+        Kindness
+        <small>to others & to self</small>
+      </span>
+    </div>
+
+    <div className="about-meta">
+      Bengaluru
+      <span>·</span>
+      M.Des, UX / Interaction Design
+      <span>·</span>
+      Open to UX opportunities
+    </div>
+
+    <div className="about-actions">
+      <a className="about-primary-link" href="mailto:snssravani19@gmail.com">
+        Let's connect <span>↗</span>
+      </a>
+
+      <a
+  className="contact-email"
+  href="mailto:yourname@gmail.com"
+>
+snssravani19@gmail.com
+</a>
+      <a href="#about">LinkedIn ↗</a>
+      {/* <a href="#about">Instagram ↗</a> */}
+    </div>
+  </div>
+</section>
 
       <footer className="reference-footer">
         <span>© 2026 Sravani</span>
@@ -288,6 +365,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/beacon" element={<Beacon />} />
+      <Route path="/wibi" element={<Wibi />} />
+      <Route path="/reframe" element={<Reframe />} />
+      <Route path="/curio" element={<Curio />} />
     </Routes>
   )
 }
