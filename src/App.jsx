@@ -3,7 +3,9 @@ import Beacon from './beacon'
 import Wibi from './wibi'
 import Reframe from './reframe'
 import Curio from './curio'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+
 
 const projects = [
   {
@@ -104,54 +106,37 @@ const worlds = [
 
 function ProjectCard({ project }) {
   return (
-    <Link className="reference-project-card" to={project.link}>
+    <Link
+      className={`world-project world-project-${project.number}`}
+      to={project.link}
+    >
+      <div className="world-project-visual">
+        <img src={project.image} alt={`${project.title} project`} />
 
-      <div className="project-card-top">
-        <span>{project.number}</span>
-        <span>{project.year}</span>
+        <span className="world-project-number">
+          {project.number}
+        </span>
+
+        <span className="world-project-arrow">↗</span>
       </div>
 
-      <div className="project-image-frame">
-        <img src={project.image} alt="" />
-        <span className="image-corner">↗</span>
-      </div>
-
-      <div className="project-card-copy">
-        <span className="project-type">{project.type}</span>
+      <div className="world-project-info">
+        <span className="world-project-type">
+          {project.type}
+        </span>
 
         <h3>{project.title}</h3>
 
-        <p className="project-subtitle">
-          {project.subtitle}
-        </p>
+        <p>{project.subtitle}</p>
 
-        <blockquote>
-          “{project.question}”
-        </blockquote>
-
-        {project.problem && (
-          <div className="project-30-second">
-            <div>
-              <span>THE PROBLEM</span>
-              <p>{project.problem}</p>
-            </div>
-
-            <div>
-              <span>THE IDEA</span>
-              <p>{project.idea}</p>
-            </div>
-          </div>
-        )}
-
-        {project.link === '/beacon' && (
-          <span className="project-link">
-            View full case study <span>→</span>
-          </span>
-        )}
+        {/* <span className="world-project-explore">
+          Explore project <span>↗</span>
+        </span> */}
       </div>
     </Link>
   )
 }
+
 
 function Home() {
   return (
@@ -191,7 +176,7 @@ function Home() {
   </p>
 
   <a className="hero-work-link" href="#work">
-    SELECTED WORK <span>↓</span>
+    See Where This Leads <span>↓</span>
   </a>
 
 </div>
@@ -200,19 +185,38 @@ function Home() {
           <img src="/hero-placeholder.png" alt="Abstract purple night-time world made of interfaces, systems and small worlds" />
           {/* <span className="hero-note note-one">Same sky,<br />different<br />worlds.</span>
           <span className="hero-note note-two">small things<br />matter </span> */}
-          <span className="hero-cat">⌁</span>
+          
         </div>
       </section>
 
       <section id="work" className="reference-panel work-panel">
-        <div className="panel-heading">
-          <h2>Featured Work</h2>
-          <span className="heading-line" />
-        </div>
-        <div className="project-grid">
+        <div className="work-intro">
+
+  <span className="work-eyebrow">
+    SELECTED INVESTIGATIONS · 2026
+  </span>
+
+  <div className="work-title-row">
+    <h2>Featured Work</h2>
+
+    <p>
+      Questions I followed far enough
+      <br />
+      to become projects.
+    </p>
+  </div>
+
+  {/* <div className="work-thread">
+    <span>01</span>
+    <span className="work-thread-line" />
+    <span>04</span>
+  </div> */}
+
+</div>
+        <div className="project-world">
           {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
         </div>
-        <span className="panel-note">different<br />problems,<br />same curiosity.</span>
+        {/* <span className="panel-note">different<br />problems,<br />same curiosity.</span> */}
         <div className="panel-spark"></div>
       </section>
 
@@ -361,15 +365,26 @@ snssravani19@gmail.com
 }
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/beacon" element={<Beacon />} />
-      <Route path="/wibi" element={<Wibi />} />
-      <Route path="/reframe" element={<Reframe />} />
-      <Route path="/curio" element={<Curio />} />
-    </Routes>
-  )
+    <>
+      <ScrollToTop />
+
+      <div
+        key={location.pathname}
+        className="page-transition"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/beacon" element={<Beacon />} />
+          <Route path="/wibi" element={<Wibi />} />
+          <Route path="/reframe" element={<Reframe />} />
+          <Route path="/curio" element={<Curio />} />
+        </Routes>
+      </div>
+    </>
+  );
 }
 
 export default App

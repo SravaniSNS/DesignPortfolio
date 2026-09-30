@@ -5,92 +5,307 @@ function Wibi() {
   return (
     <main className="wibi-case">
 
-      {/* NAV */}
-      <nav className="wibi-nav">
-        <Link to="/">← Back to work</Link>
-        <span>WIBI · 2026</span>
-      </nav>
+      {/* BACK TO PORTFOLIO */}
+<Link to="/" className="wibi-back-link">
+  <span className="wibi-back-arrow">←</span>
+  <span>Back to portfolio</span>
+</Link>
 
 
       {/* HERO */}
-      <section className="wibi-hero">
+      {/* =========================================
+    HERO
+========================================= */}
 
-        <div className="wibi-hero-meta">
-          <span>UX RESEARCH</span>
-          <span>SERVICE DESIGN</span>
-          <span>INTERACTION DESIGN</span>
-        </div>
+<section className="wibi-hero">
 
-        <h1>WIBI</h1>
+  <div className="wibi-hero-main">
 
-        <p className="wibi-hero-name">
-          Where Will You Be?
-        </p>
+    <div className="wibi-hero-identity">
+      <span className="wibi-project-name">WIBI</span>
 
-        <p className="wibi-hero-question">
-          What if dating started with something you wanted to do,
-          rather than someone you wanted to swipe on?
-        </p>
+      <span className="wibi-project-type">
+        ACTIVITY-FIRST DATING · MOBILE
+      </span>
+    </div>
 
-        <div className="wibi-hero-summary">
 
-          <div>
-            <span>THE PROBLEM</span>
-            <p>
-              Dating platforms make it easy to encounter people,
-              but harder to build trust, move beyond profiles and
-              turn matches into meaningful real-world interaction.
-            </p>
-          </div>
+    <div className="wibi-hero-title">
 
-          <div>
-            <span>THE IDEA</span>
-            <p>
-              WIBI shifts discovery from profiles to shared activities
-              and events — creating context for connection before
-              asking people to evaluate one another.
-            </p>
-          </div>
+      <p className="wibi-hero-name">
+        Where Will You Be?
+      </p>
 
-        </div>
+      <h1>
+        Start with
+        <br />
+        somewhere to be.
+      </h1>
 
-      </section>
+    </div>
+
+
+    <p className="wibi-hero-question">
+      What if dating started with something you wanted to do,
+      rather than someone you wanted to swipe on?
+    </p>
+
+
+    {/* CONCEPT VISUAL
+
+    <div className="wibi-orbit" aria-hidden="true">
+
+      <div className="wibi-orbit-ring ring-one"></div>
+      <div className="wibi-orbit-ring ring-two"></div>
+
+      <span className="wibi-orbit-item item-coffee">
+        COFFEE
+      </span>
+
+      <span className="wibi-orbit-item item-music">
+        MUSIC
+      </span>
+
+      <span className="wibi-orbit-item item-books">
+        BOOKS
+      </span>
+
+      <span className="wibi-orbit-item item-pottery">
+        POTTERY
+      </span>
+
+      <span className="wibi-orbit-center">
+        WIBI
+      </span>
+
+    </div> */}
+
+  </div>
+
+
+  <aside className="wibi-hero-summary">
+
+    <div>
+      <span>THE IDEA</span>
+
+      <p>
+        WIBI shifts dating from profile-first discovery to shared
+        activities and events — creating context for connection
+        before asking people to evaluate one another.
+      </p>
+    </div>
+
+
+    <div>
+      <span>CONTEXT</span>
+
+      <p>
+        Team project · UX Studio 2
+      </p>
+    </div>
+
+
+    <div>
+      <span>MY CONTRIBUTION</span>
+
+      <p>
+        Led research and research documentation. Problem framing,
+        synthesis, ideation and service design were developed
+        collaboratively by the three-person team.
+      </p>
+    </div>
+
+  </aside>
+
+</section>
+
+{/* =========================================
+    CASE STUDY NAVIGATION
+========================================= */}
+
+<aside className="wibi-case-navigation">
+
+  <a href="#wibi-problem">
+    <span>01</span>
+    The Problem
+  </a>
+
+  <a href="#wibi-research">
+    <span>02</span>
+    Research
+  </a>
+
+  <a href="#wibi-synthesis">
+    <span>03</span>
+    Synthesis
+  </a>
+
+  <a href="#wibi-translation">
+    <span>04</span>
+    Research → Design
+  </a>
+
+  <a href="#wibi-system">
+    <span>05</span>
+    The System
+  </a>
+
+  <a href="#wibi-structure">
+    <span>06</span>
+    Structure
+  </a>
+
+  <a href="#wibi-solution">
+    <span>07</span>
+    The Solution
+  </a>
+
+  <a href="#wibi-reflection">
+    <span>08</span>
+    Reflection
+  </a>
+
+</aside>
 
 
       {/* RESEARCH */}
-      <section className="wibi-section">
+<section className="wibi-section wibi-research" id="wibi-research">
 
-        <div className="wibi-section-label">
-          <span>01</span>
-          <span>UNDERSTANDING THE PROBLEM</span>
-        </div>
+  <div className="wibi-section-label">
+    <span>02</span>
+    <span>RESEARCH</span>
+  </div>
 
-        <div className="wibi-section-heading">
-          <p>Research</p>
-          <h2>
-            We weren't trying to understand why people weren't matching.
-            We wanted to understand why matching wasn't becoming connection.
-          </h2>
-        </div>
+  <div className="wibi-section-heading">
+    <p>Understanding the experience</p>
 
-        <div className="wibi-research-stats">
-          <div>
-            <strong>15</strong>
-            <span>peer-reviewed papers</span>
-          </div>
+    <h2>
+      We looked beyond the match to understand what was
+      getting in the way of connection.
+    </h2>
+  </div>
 
-          <div>
-            <strong>25</strong>
-            <span>survey responses</span>
-          </div>
 
-          <div>
-            <strong>9</strong>
-            <span>in-depth interviews</span>
-          </div>
-        </div>
+  {/* METHODS */}
+  <div className="wibi-research-stats">
 
-      </section>
+    <div>
+      <strong>15</strong>
+      <span>Peer-reviewed papers</span>
+      <p>Secondary research</p>
+    </div>
+
+    <div>
+      <strong>25</strong>
+      <span>Survey responses</span>
+      <p>Quantitative research</p>
+    </div>
+
+    <div>
+      <strong>9</strong>
+      <span>In-depth interviews</span>
+      <p>Qualitative research</p>
+    </div>
+
+  </div>
+
+
+  {/* RESEARCH STORY */}
+  <div className="wibi-research-story">
+
+    <div className="wibi-research-story-label">
+      <span>WHAT WE INVESTIGATED</span>
+    </div>
+
+    <div className="wibi-research-story-copy">
+      <p>
+        The research moved across three levels: what existing
+        literature says about digital dating, what broader patterns
+        appeared across users, and how those experiences felt in
+        individual stories.
+      </p>
+
+      <p>
+        Together, the methods helped us look beyond matching metrics
+        and examine trust, authenticity, emotional fatigue, shared
+        interests and the transition from online interaction to
+        meeting in person.
+      </p>
+    </div>
+
+  </div>
+
+
+  {/* SURVEY SNAPSHOT */}
+  <div className="wibi-survey-snapshot">
+
+    <div className="wibi-survey-intro">
+      <span>SURVEY SNAPSHOT</span>
+
+      <h3>
+        Matching was happening.
+        <br />
+        Connection often wasn't.
+      </h3>
+    </div>
+
+    <div className="wibi-survey-findings">
+
+      <div>
+        <strong>56%</strong>
+        <p>
+          said matches never led to
+          a real-world meeting.
+        </p>
+      </div>
+
+      <div>
+        <strong>75%</strong>
+        <p>
+          said profiles only sometimes
+          felt authentic.
+        </p>
+      </div>
+
+      <div>
+        <strong>44%</strong>
+        <p>
+          cited a lack of meaningful
+          conversation as the #1 issue.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  {/* INTERVIEW THEMES */}
+  <div className="wibi-interview-themes">
+
+    <div className="wibi-interview-heading">
+      <span>INTERVIEW THEMES</span>
+
+      <p>
+        Nine in-depth conversations helped us understand
+        the experiences underneath the numbers.
+      </p>
+    </div>
+
+    <div className="wibi-theme-list">
+      <span>Trust & authenticity</span>
+      <span>Clear intentions</span>
+      <span>Meaningful connection</span>
+      <span>Shared interests</span>
+      <span>Dating fatigue</span>
+      <span>Safety</span>
+      <span>Real experiences</span>
+      <span>Fair opportunities</span>
+    </div>
+
+  </div>
+
+</section>
 
 
       {/* INSIGHTS */}
@@ -443,9 +658,7 @@ function Wibi() {
           trust and shared experience.
         </p>
 
-        <Link to="/" className="wibi-back">
-          ← Back to selected work
-        </Link>
+        
 
       </section>
 

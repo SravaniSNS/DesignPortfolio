@@ -4,57 +4,126 @@
    warm paper · lavender · editorial · calm
    ========================================= */
 
-.wibi-case {
-  --wibi-paper: #f8f6f3;
-  --wibi-paper-soft: #f1edf4;
-  --wibi-lilac: #e9e1ee;
-  --wibi-purple: #9c77af;
-  --wibi-purple-deep: #60446f;
-  --wibi-ink: #29222e;
-  --wibi-muted: #716976;
-  --wibi-line: rgba(96, 68, 111, 0.16);
-
-  min-height: 100vh;
-  background: var(--wibi-paper);
-  color: var(--wibi-ink);
-  font-family: Poppins, Inter, sans-serif;
-}
-
-
 /* =========================================
-   NAV
+   WIBI — CASE STUDY
+
+   Portfolio world:
+   dark · editorial · lavender · human
    ========================================= */
 
-.wibi-nav {
-  width: min(1500px, calc(100% - 96px));
-  min-height: 76px;
-  margin: 0 auto;
+.wibi-case {
+  /* PORTFOLIO FOUNDATION */
+  --wibi-bg: #181923;
+  --wibi-bg-soft: #1d1e29;
 
-  display: flex;
+  /* PROJECT SURFACES */
+  --wibi-surface: #22212d;
+  --wibi-surface-soft: #292633;
+
+  /* WIBI IDENTITY */
+  --wibi-lilac: #cbb7dc;
+  --wibi-purple: #a98bc0;
+  --wibi-purple-deep: #80649a;
+
+  /* TEXT */
+  --wibi-cream: #f2eef2;
+  --wibi-white: #f7f4f7;
+  --wibi-muted: #aaa4b0;
+
+  /* STRUCTURE */
+  --wibi-line: rgba(203, 183, 220, 0.14);
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 78% 10%,
+      rgba(128, 100, 154, 0.09),
+      transparent 32%
+    ),
+    var(--wibi-bg);
+
+  color: var(--wibi-cream);
+
+  font-family: Inter, sans-serif;
+}
+
+/* =========================================
+   BACK TO PORTFOLIO
+   ========================================= */
+
+.wibi-back-link {
+  position: fixed;
+  top: 28px;
+  left: 32px;
+  z-index: 1000;
+
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
 
-  border-bottom: 1px solid var(--wibi-line);
+  width: fit-content;
+  padding: 8px 14px 8px 9px;
 
+  border: 1px solid rgba(203, 183, 220, 0.2);
+  border-radius: 999px;
+
+  background: rgba(24, 25, 35, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color: rgba(242, 238, 242, 0.76);
+
+  font-family: Inter, sans-serif;
   font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+  font-weight: 550;
+  line-height: 1;
 
-.wibi-nav a {
-  color: inherit;
   text-decoration: none;
-  opacity: 0.58;
-  transition: opacity 180ms ease;
+  white-space: nowrap;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
-.wibi-nav a:hover {
-  opacity: 1;
+.wibi-back-arrow {
+  flex: 0 0 24px;
+
+  width: 24px;
+  height: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(203, 183, 220, 0.1);
+  color: var(--wibi-lilac);
+
+  transition: transform 180ms ease;
 }
 
-.wibi-nav > span {
-  color: var(--wibi-purple-deep);
-  opacity: 0.55;
+.wibi-back-link span:not(.wibi-back-arrow) {
+  display: inline-block;
+  width: auto;
+  white-space: nowrap;
+}
+
+.wibi-back-link:hover {
+  color: var(--wibi-white);
+  background: rgba(31, 31, 43, 0.95);
+  border-color: rgba(203, 183, 220, 0.36);
+
+  transform: translateY(-1px);
+}
+
+.wibi-back-link:hover .wibi-back-arrow {
+  transform: translateX(-2px);
 }
 
 
@@ -64,91 +133,315 @@
 
 .wibi-hero {
   width: min(1500px, calc(100% - 96px));
-  min-height: 880px;
+  min-height: calc(100vh - 76px);
+
   margin: 0 auto;
-  padding: 110px 0 100px;
+  padding: 90px 0 90px;
 
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  grid-template-rows: auto auto 1fr auto;
-  column-gap: 90px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: clamp(70px, 8vw, 140px);
+
+  align-items: end;
 
   position: relative;
+
+  border-bottom: 1px solid var(--wibi-line);
 }
 
-.wibi-hero::after {
-  content: "✦";
 
-  position: absolute;
-  right: 4%;
-  top: 19%;
+/* -----------------------------------------
+   MAIN HERO AREA
+   ----------------------------------------- */
 
-  color: var(--wibi-purple);
-  font-family: Georgia, serif;
-  font-size: 20px;
+.wibi-hero-main {
+  position: relative;
 
-  opacity: 0.5;
-}
-
-.wibi-hero-meta {
-  grid-column: 1 / -1;
+  min-height: 670px;
 
   display: flex;
-  gap: 22px;
-
-  margin-bottom: 65px;
-
-  color: var(--wibi-purple-deep);
-
-  font-size: 9px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-
-  opacity: 0.7;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.wibi-hero h1 {
-  grid-column: 1;
-  margin: 0;
 
-  color: var(--wibi-purple-deep);
+/* -----------------------------------------
+   PROJECT IDENTITY
+   ----------------------------------------- */
 
-  font-family: "Cormorant Garamond", "Instrument Serif", Georgia, serif;
-  font-size: clamp(120px, 16vw, 245px);
-  font-weight: 400;
-  line-height: 0.7;
-  letter-spacing: -0.055em;
+.wibi-hero-identity {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
 }
+
+
+.wibi-project-name {
+  color: var(--wibi-cream);
+
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+}
+
+
+.wibi-project-type {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color: var(--wibi-lilac);
+
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+}
+
+
+.wibi-project-type::before {
+  content: "";
+
+  width: 34px;
+  height: 1px;
+
+  background: rgba(203, 183, 220, 0.38);
+}
+
+
+/* -----------------------------------------
+   TITLE
+   ----------------------------------------- */
+
+.wibi-hero-title {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 34px;
+}
+
 
 .wibi-hero-name {
-  grid-column: 1;
-
-  margin: 42px 0 0;
+  margin: 0 0 15px;
 
   color: var(--wibi-purple);
 
-  font-family: "Cormorant Garamond", "Instrument Serif", Georgia, serif;
-  font-size: 27px;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 22px;
   font-style: italic;
 }
 
-.wibi-hero-question {
-  grid-column: 1;
-  align-self: end;
 
-  max-width: 780px;
-  margin: 105px 0 0;
+.wibi-hero h1 {
+  max-width: 850px;
 
-  font-family: "Cormorant Garamond", "Instrument Serif", Georgia, serif;
-  font-size: clamp(40px, 4.3vw, 68px);
+  margin: 0;
+
+  color: var(--wibi-cream);
+
+  font-family: "Instrument Serif", Georgia, serif;
+
+  font-size: clamp(76px, 8.3vw, 132px);
   font-weight: 400;
-  line-height: 0.98;
+
+  line-height: 0.86;
+  letter-spacing: -0.045em;
 }
 
-.wibi-hero-summary {
-  grid-column: 2;
-  grid-row: 2 / 5;
 
+/* -----------------------------------------
+   HERO QUESTION
+   ----------------------------------------- */
+
+.wibi-hero-question {
+  position: relative;
+  z-index: 2;
+
+  max-width: 620px;
+
+  margin: 0;
+
+  color: var(--wibi-muted);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   ABSTRACT ACTIVITY SYSTEM
+   ========================================= */
+
+.wibi-orbit {
+  position: absolute;
+
+  width: 340px;
+  height: 340px;
+
+  right: 1%;
+  top: 16%;
+
+  pointer-events: none;
+
+  opacity: 0.88;
+}
+
+
+/* ambient glow */
+
+.wibi-orbit::before {
+  content: "";
+
+  position: absolute;
+
+  width: 440px;
+  height: 440px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(169, 139, 192, 0.10),
+      rgba(169, 139, 192, 0.025) 45%,
+      transparent 70%
+    );
+}
+
+
+/* ORBIT RINGS */
+
+.wibi-orbit-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border: 1px solid rgba(203, 183, 220, 0.13);
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+.wibi-orbit .ring-one {
+  width: 190px;
+  height: 190px;
+}
+
+
+.wibi-orbit .ring-two {
+  width: 310px;
+  height: 310px;
+
+  border-color: rgba(203, 183, 220, 0.07);
+}
+
+
+/* CENTER */
+
+.wibi-orbit-center {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 72px;
+  height: 72px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(203, 183, 220, 0.28);
+  border-radius: 50%;
+
+  background: rgba(169, 139, 192, 0.09);
+
+  color: var(--wibi-lilac);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+
+  box-shadow:
+    0 0 40px rgba(169, 139, 192, 0.08);
+}
+
+
+/* ACTIVITIES */
+
+.wibi-orbit-item {
+  position: absolute;
+
+  padding: 7px 10px;
+
+  border: 1px solid rgba(203, 183, 220, 0.15);
+  border-radius: 999px;
+
+  background: rgba(24, 25, 35, 0.75);
+
+  color: rgba(242, 238, 242, 0.56);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+}
+
+
+.wibi-orbit .item-coffee {
+  top: 2%;
+  left: 43%;
+}
+
+
+.wibi-orbit .item-music {
+  top: 44%;
+  left: -2%;
+}
+
+
+.wibi-orbit .item-books {
+  top: 42%;
+  right: -1%;
+}
+
+
+.wibi-orbit .item-pottery {
+  bottom: 3%;
+  left: 39%;
+}
+
+
+/* =========================================
+   HERO SUMMARY
+   ========================================= */
+
+.wibi-hero-summary {
   align-self: end;
 
   display: flex;
@@ -157,32 +450,267 @@
   border-top: 1px solid var(--wibi-line);
 }
 
+
 .wibi-hero-summary > div {
-  padding: 28px 0 32px;
+  padding: 22px 0 24px;
+
   border-bottom: 1px solid var(--wibi-line);
 }
 
+
 .wibi-hero-summary span {
   display: block;
-  margin-bottom: 11px;
 
-  color: var(--wibi-purple);
+  margin-bottom: 9px;
+
+  color: var(--wibi-lilac);
+
+  font-family: Inter, sans-serif;
 
   font-size: 9px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
 }
+
 
 .wibi-hero-summary p {
-  max-width: 470px;
+  max-width: 320px;
+
   margin: 0;
 
-  font-size: 13px;
-  line-height: 1.7;
-
   color: var(--wibi-muted);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 12px;
+  line-height: 1.65;
 }
 
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+  .wibi-hero {
+    width: calc(100% - 48px);
+
+    min-height: auto;
+
+    padding: 80px 0 60px;
+
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+
+  .wibi-hero-main {
+    min-height: 650px;
+  }
+
+
+  .wibi-hero-identity {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 9px;
+  }
+
+
+  .wibi-project-type::before {
+    display: none;
+  }
+
+
+  .wibi-hero h1 {
+    font-size: clamp(68px, 20vw, 105px);
+  }
+
+
+  .wibi-orbit {
+    width: 260px;
+    height: 260px;
+
+    right: -30px;
+    top: 19%;
+
+    opacity: 0.65;
+  }
+
+
+  .wibi-orbit .ring-one {
+    width: 145px;
+    height: 145px;
+  }
+
+
+  .wibi-orbit .ring-two {
+    width: 235px;
+    height: 235px;
+  }
+
+
+  .wibi-orbit-center {
+    width: 60px;
+    height: 60px;
+  }
+
+
+  .wibi-hero-summary p {
+    max-width: 100%;
+  }
+
+}
+
+/* =========================================
+   BACK TO PORTFOLIO
+   ========================================= */
+
+
+
+
+
+/* =========================================
+   CASE STUDY NAVIGATION
+   ========================================= */
+
+.wibi-case-navigation {
+  position: sticky;
+  top: 0;
+
+  z-index: 999;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 13px 4vw;
+
+  overflow-x: auto;
+
+  border-top: 1px solid var(--wibi-line);
+  border-bottom: 1px solid var(--wibi-line);
+
+  background: rgba(24, 25, 35, 0.94);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  scrollbar-width: none;
+}
+
+
+.wibi-case-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+
+.wibi-case-navigation a {
+  flex: 1 0 auto;
+
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 9px 13px;
+
+  border: 1px solid rgba(203, 183, 220, 0.08);
+  border-radius: 6px;
+
+  background: rgba(203, 183, 220, 0.018);
+
+  color: rgba(242, 238, 242, 0.6);
+
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+
+.wibi-case-navigation a span {
+  color: var(--wibi-lilac);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+}
+
+
+.wibi-case-navigation a::after {
+  content: "↘";
+
+  color: rgba(203, 183, 220, 0.35);
+
+  font-size: 9px;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.wibi-case-navigation a:hover {
+  color: var(--wibi-white);
+
+  background: rgba(203, 183, 220, 0.07);
+
+  border-color: rgba(203, 183, 220, 0.24);
+}
+
+
+.wibi-case-navigation a:hover::after {
+  color: var(--wibi-lilac);
+
+  transform: translate(2px, 2px);
+}
+
+
+/* Keep headings visible when navigation jumps */
+
+.wibi-case section[id] {
+  scroll-margin-top: 95px;
+}
+
+
+@media (max-width: 800px) {
+
+  .wibi-back-link {
+    left: 24px;
+  }
+
+  .wibi-case-navigation {
+    padding: 11px 20px;
+
+    gap: 8px;
+  }
+
+  .wibi-case-navigation a {
+    flex: 0 0 auto;
+
+    padding: 9px 13px;
+  }
+
+}
 
 /* =========================================
    COMMON SECTION SYSTEM
@@ -780,5 +1308,206 @@
 
   .wibi-reflection h2 {
     font-size: 51px;
+  }
+}
+
+/* =========================================
+   02 — RESEARCH
+   ========================================= */
+
+.wibi-research-stats p {
+  margin: 14px 0 0;
+
+  color: rgba(170, 164, 176, 0.58);
+
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+
+/* RESEARCH STORY */
+
+.wibi-research-story {
+  margin: 80px 0 0 19%;
+  padding: 32px 0;
+
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: 60px;
+
+  border-top: 1px solid var(--wibi-line);
+  border-bottom: 1px solid var(--wibi-line);
+}
+
+.wibi-research-story-label span,
+.wibi-survey-intro > span,
+.wibi-interview-heading > span {
+  color: var(--wibi-lilac);
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.wibi-research-story-copy {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+}
+
+.wibi-research-story-copy p {
+  margin: 0;
+
+  color: var(--wibi-muted);
+
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+
+/* SURVEY */
+
+.wibi-survey-snapshot {
+  margin: 90px 0 0 19%;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 70px;
+}
+
+.wibi-survey-intro h3 {
+  max-width: 420px;
+  margin: 25px 0 0;
+
+  color: var(--wibi-cream);
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.04;
+}
+
+.wibi-survey-findings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid var(--wibi-line);
+}
+
+.wibi-survey-findings > div {
+  padding: 26px 24px 22px 0;
+}
+
+.wibi-survey-findings > div + div {
+  padding-left: 24px;
+  border-left: 1px solid var(--wibi-line);
+}
+
+.wibi-survey-findings strong {
+  display: block;
+
+  color: var(--wibi-lilac);
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(48px, 4.5vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.wibi-survey-findings p {
+  max-width: 180px;
+  margin: 20px 0 0;
+
+  color: var(--wibi-muted);
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* INTERVIEWS */
+
+.wibi-interview-themes {
+  margin: 90px 0 0 19%;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 70px;
+
+  padding-top: 32px;
+  border-top: 1px solid var(--wibi-line);
+}
+
+.wibi-interview-heading p {
+  max-width: 330px;
+  margin: 24px 0 0;
+
+  color: var(--wibi-muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.wibi-theme-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  gap: 9px;
+}
+
+.wibi-theme-list span {
+  padding: 10px 14px;
+
+  border: 1px solid rgba(203, 183, 220, 0.15);
+  border-radius: 999px;
+
+  background: rgba(203, 183, 220, 0.035);
+
+  color: rgba(242, 238, 242, 0.72);
+
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .wibi-research-story,
+  .wibi-survey-snapshot,
+  .wibi-interview-themes {
+    margin-left: 0;
+  }
+
+  .wibi-research-story {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .wibi-research-story-copy {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .wibi-survey-snapshot,
+  .wibi-interview-themes {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wibi-survey-findings {
+    grid-template-columns: 1fr;
+  }
+
+  .wibi-survey-findings > div {
+    padding: 24px 0;
+  }
+
+  .wibi-survey-findings > div + div {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--wibi-line);
   }
 }
