@@ -1,0 +1,835 @@
+/* =========================================================
+   BEACON
+   A world inside the portfolio
+   ========================================================= */
+
+.beacon-case {
+  --beacon-night: #1c1a44;
+  --beacon-night-soft: #252252;
+  --beacon-cream: #f0f8d0;
+  --beacon-white: #f5f3ee;
+  --beacon-teal: #338d82;
+  --beacon-blue: #5b8fb9;
+  --beacon-seafoam: #7ec8a0;
+  --beacon-muted: rgba(240, 248, 208, 0.58);
+  --beacon-line: rgba(240, 248, 208, 0.16);
+
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 75% 8%,
+      rgba(91, 143, 185, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(51, 141, 130, 0.12),
+      transparent 25%
+    ),
+    var(--beacon-night);
+
+  color: var(--beacon-white);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.beacon-case .case-hero {
+  min-height: 90vh;
+  padding: 140px 8vw 100px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  align-items: end;
+  gap: 80px;
+
+  position: relative;
+}
+
+
+/* subtle horizon */
+
+.beacon-case .case-hero::after {
+  content: "";
+  position: absolute;
+  left: 8vw;
+  right: 8vw;
+  bottom: 0;
+
+  height: 1px;
+  background: var(--beacon-line);
+}
+
+
+/* little beacon / signal */
+
+.beacon-case .case-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  right: 12vw;
+  top: 24%;
+
+  border-radius: 50%;
+  background: var(--beacon-cream);
+
+  box-shadow:
+    0 0 0 8px rgba(240, 248, 208, 0.05),
+    0 0 30px rgba(240, 248, 208, 0.5);
+}
+
+
+.beacon-case .case-label {
+  display: block;
+
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--beacon-seafoam);
+}
+
+
+/* HERO TITLE */
+
+.beacon-case .case-hero h2 {
+  margin: 28px 0 34px;
+
+  max-width: 900px;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(76px, 10vw, 150px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+
+  color: var(--beacon-cream);
+}
+
+
+/* HERO DESCRIPTION */
+
+.beacon-case .case-subtitle {
+  max-width: 600px;
+
+  margin: 0;
+
+  font-family: Inter, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   HERO META
+   ========================================================= */
+
+.beacon-case .case-meta {
+  align-self: end;
+
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  padding-bottom: 5px;
+}
+
+
+.beacon-case .case-meta > div {
+  padding-top: 14px;
+  border-top: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .case-meta span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case .case-meta p {
+  margin: 0;
+
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: var(--beacon-white);
+}
+
+
+/* =========================================================
+   CASE STUDY NAVIGATION
+   ========================================================= */
+
+.beacon-case .case-navigation {
+  position: sticky;
+  top: 30px;
+  z-index: 5;
+
+  margin-left: 8vw;
+  width: calc(100% - 16vw);
+
+  display: flex;
+  gap: 8px;
+
+  padding: 18px 0;
+
+  overflow-x: auto;
+
+  border-bottom: 1px solid var(--beacon-line);
+
+  scrollbar-width: none;
+
+  background: var(--beacon-night);
+}
+
+.beacon-case .case-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+
+.beacon-case .case-navigation a {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 8px 12px;
+
+  color: rgba(240, 248, 208, 0.45);
+
+  text-decoration: none;
+
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+
+.beacon-case .case-navigation a span {
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case .case-navigation a:hover {
+  color: var(--beacon-cream);
+  background: rgba(240, 248, 208, 0.05);
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+   ========================================================= */
+
+.beacon-case .beacon-section {
+  position: relative;
+
+  padding: 160px 8vw;
+
+  border-bottom: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .beacon-section-heading {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 760px);
+
+  gap: 30px;
+
+  margin-bottom: 90px;
+}
+
+
+.beacon-case .case-number {
+  padding-top: 10px;
+
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case .beacon-section-heading h3 {
+  margin: 22px 0 0;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(48px, 6vw, 90px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+
+  color: var(--beacon-cream);
+}
+
+
+/* =========================================================
+   BODY TEXT
+   ========================================================= */
+
+.beacon-case p {
+  font-family: Inter, sans-serif;
+}
+
+
+.beacon-case .beacon-intro {
+  max-width: 850px;
+
+  margin-left: 120px;
+}
+
+
+.beacon-case .beacon-intro p {
+  font-size: 18px;
+  line-height: 1.8;
+
+  color: var(--beacon-muted);
+}
+
+
+.beacon-case .beacon-intro .beacon-large-text {
+  max-width: 700px;
+
+  margin-bottom: 38px;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(38px, 4vw, 64px);
+  line-height: 1;
+
+  color: var(--beacon-white);
+}
+
+
+/* =========================================================
+   GRIDS / CARDS
+   ========================================================= */
+
+.beacon-case .beacon-problem-grid,
+.beacon-case .beacon-insights,
+.beacon-case .beacon-ia-grid,
+.beacon-case .beacon-decisions,
+.beacon-case .beacon-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 1px;
+
+  margin-top: 100px;
+
+  background: var(--beacon-line);
+}
+
+
+.beacon-case .beacon-problem-grid article,
+.beacon-case .beacon-insights article,
+.beacon-case .beacon-ia-grid article,
+.beacon-case .beacon-decisions article,
+.beacon-case .beacon-solution-grid article {
+  padding: 35px;
+
+  background: var(--beacon-night);
+}
+
+
+.beacon-case article > span {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case article h4 {
+  margin: 0 0 15px;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+
+  color: var(--beacon-cream);
+}
+
+
+.beacon-case article p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   PROBLEM LIST
+   ========================================================= */
+
+.beacon-case .beacon-problem-list {
+  max-width: 850px;
+
+  margin: 100px 0 0 120px;
+}
+
+
+.beacon-case .beacon-problem-list > div {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+
+  padding: 22px 0;
+
+  border-top: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .beacon-problem-list span {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case .beacon-problem-list p {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.5;
+
+  color: var(--beacon-white);
+}
+
+
+/* =========================================================
+   PROBLEM BRIEF
+   ========================================================= */
+
+.beacon-case .beacon-problem-brief {
+  max-width: 850px;
+
+  margin: 120px auto 0;
+
+  padding: 50px;
+
+  border: 1px solid var(--beacon-line);
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(126, 200, 160, 0.08),
+      transparent 30%
+    ),
+    rgba(240, 248, 208, 0.025);
+}
+
+
+.beacon-case .beacon-problem-brief p {
+  margin: 25px 0 0;
+
+  max-width: 700px;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 34px;
+  line-height: 1.15;
+
+  color: var(--beacon-cream);
+}
+
+
+/* =========================================================
+   RESEARCH STATS
+   ========================================================= */
+
+.beacon-case .beacon-research-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 80px;
+
+  max-width: 1000px;
+  margin-left: 120px;
+}
+
+
+.beacon-case .beacon-research-intro > p {
+  max-width: 500px;
+
+  font-size: 18px;
+  line-height: 1.8;
+
+  color: var(--beacon-muted);
+}
+
+
+.beacon-case .beacon-research-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1px;
+
+  background: var(--beacon-line);
+}
+
+
+.beacon-case .beacon-research-stats > div {
+  padding: 24px;
+
+  background: var(--beacon-night);
+}
+
+
+.beacon-case .beacon-research-stats strong {
+  display: block;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 48px;
+  font-weight: 400;
+
+  color: var(--beacon-cream);
+}
+
+
+.beacon-case .beacon-research-stats span {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   METHOD / METAPHOR
+   ========================================================= */
+
+.beacon-case .beacon-research-method,
+.beacon-case .beacon-metaphor {
+  max-width: 850px;
+
+  margin: 120px auto 0;
+}
+
+
+.beacon-case .beacon-research-method h4 {
+  margin: 22px 0;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--beacon-cream);
+}
+
+
+.beacon-case .beacon-research-method p,
+.beacon-case .beacon-metaphor p {
+  max-width: 650px;
+
+  font-size: 17px;
+  line-height: 1.8;
+
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   BEFORE / AFTER
+   ========================================================= */
+
+.beacon-case .beacon-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  max-width: 1000px;
+
+  margin: 110px auto 0;
+
+  border-top: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .beacon-before-after > div {
+  padding: 35px;
+
+  border-bottom: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .beacon-before-after > div + div {
+  border-left: 1px solid var(--beacon-line);
+}
+
+
+.beacon-case .beacon-before-after p {
+  padding: 12px 0;
+
+  margin: 0;
+
+  border-bottom: 1px solid rgba(240, 248, 208, 0.08);
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   FLOW
+   ========================================================= */
+
+.beacon-case .beacon-section-lead {
+  max-width: 700px;
+
+  margin: -30px 0 80px 120px;
+
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 32px;
+  line-height: 1.15;
+
+  color: var(--beacon-white);
+}
+
+
+.beacon-case .beacon-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 12px;
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 45px;
+
+  border: 1px solid var(--beacon-line);
+
+  background: rgba(240, 248, 208, 0.025);
+}
+
+
+.beacon-case .beacon-flow span {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+
+  color: var(--beacon-muted);
+}
+
+
+.beacon-case .beacon-flow span:nth-child(even) {
+  color: var(--beacon-seafoam);
+}
+
+
+/* =========================================================
+   DESIGN SYSTEM COLOURS
+   ========================================================= */
+
+.beacon-case .beacon-colours {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  max-width: 1000px;
+
+  margin: 90px auto 0;
+
+  gap: 1px;
+
+  background: var(--beacon-line);
+}
+
+
+.beacon-case .beacon-colours > div {
+  min-height: 150px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  font-family: Inter, sans-serif;
+}
+
+
+.beacon-case .beacon-colours span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+
+.beacon-case .beacon-colours small {
+  margin-top: 6px;
+
+  font-size: 10px;
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   PROTOTYPE
+   ========================================================= */
+
+.beacon-case .beacon-prototype-placeholder {
+  min-height: 500px;
+
+  margin-top: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed rgba(240, 248, 208, 0.2);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(91, 143, 185, 0.14),
+      transparent 50%
+    );
+}
+
+
+.beacon-case .beacon-prototype-placeholder span {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+
+  color: var(--beacon-seafoam);
+}
+
+
+.beacon-case .beacon-prototype-placeholder p {
+  color: var(--beacon-muted);
+}
+
+
+/* =========================================================
+   REFLECTION
+   ========================================================= */
+
+.beacon-case .beacon-reflection {
+  max-width: 850px;
+
+  margin-left: 120px;
+}
+
+
+.beacon-case .beacon-reflection p {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.05;
+
+  color: var(--beacon-cream);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .beacon-case .case-hero {
+    min-height: auto;
+
+    padding: 100px 24px 80px;
+
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .beacon-case .case-hero h2 {
+    font-size: clamp(64px, 18vw, 110px);
+  }
+
+  .beacon-case .case-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .beacon-case .case-navigation {
+    margin-left: 24px;
+    width: calc(100% - 48px);
+  }
+
+  .beacon-case .beacon-section {
+    padding: 100px 24px;
+  }
+
+  .beacon-case .beacon-section-heading {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 60px;
+  }
+
+  .beacon-case .beacon-intro,
+  .beacon-case .beacon-problem-list,
+  .beacon-case .beacon-reflection,
+  .beacon-case .beacon-research-intro {
+    margin-left: 0;
+  }
+
+  .beacon-case .beacon-research-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .beacon-case .beacon-problem-grid,
+  .beacon-case .beacon-insights,
+  .beacon-case .beacon-ia-grid,
+  .beacon-case .beacon-decisions,
+  .beacon-case .beacon-solution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beacon-case .beacon-before-after {
+    grid-template-columns: 1fr;
+  }
+
+  .beacon-case .beacon-before-after > div + div {
+    border-left: none;
+    border-top: 1px solid var(--beacon-line);
+  }
+
+  .beacon-case .beacon-colours {
+    grid-template-columns: 1fr;
+  }
+}
