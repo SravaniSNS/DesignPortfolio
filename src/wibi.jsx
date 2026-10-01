@@ -128,12 +128,12 @@ function Wibi() {
 {/* =========================================
     CASE STUDY NAVIGATION
 ========================================= */}
-
+{/* 
 <aside className="wibi-case-navigation">
 
   <a href="#wibi-problem">
     <span>01</span>
-    The Problem
+    Problem
   </a>
 
   <a href="#wibi-research">
@@ -141,37 +141,32 @@ function Wibi() {
     Research
   </a>
 
-  <a href="#wibi-synthesis">
+  <a href="#wibi-shift">
     <span>03</span>
-    Synthesis
-  </a>
-
-  <a href="#wibi-translation">
-    <span>04</span>
-    Research → Design
+    Design Shift
   </a>
 
   <a href="#wibi-system">
-    <span>05</span>
+    <span>04</span>
     The System
   </a>
 
   <a href="#wibi-structure">
-    <span>06</span>
-    Structure
+    <span>05</span>
+    Structure → Interface
   </a>
 
   <a href="#wibi-solution">
-    <span>07</span>
-    The Solution
+    <span>06</span>
+    Team Solution
   </a>
 
   <a href="#wibi-reflection">
-    <span>08</span>
+    <span>07</span>
     Reflection
   </a>
 
-</aside>
+</aside> */}
 
 {/* =========================================
     01 — THE PROBLEM
@@ -221,14 +216,24 @@ function Wibi() {
       </p>
     </article>
 
-    <article>
-      <span>03</span>
-      <strong>The meeting gap</strong>
-      <p>
-        Platforms supported matching extensively, but offered little
-        structure for moving comfortably into real-world interaction.
-      </p>
-    </article>
+    <article className="wibi-problem-gap">
+  <span>03</span>
+
+  <strong>The meeting gap</strong>
+
+  <div className="wibi-gap-visual" aria-hidden="true">
+    <span>MATCH</span>
+    <i></i>
+    <b>×</b>
+    <i></i>
+    <span>MEETING</span>
+  </div>
+
+  <p>
+    Platforms supported matching extensively, but offered little
+    structure for moving comfortably into real-world interaction.
+  </p>
+</article>
 
   </div>
 
