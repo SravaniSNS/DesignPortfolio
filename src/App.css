@@ -1583,3 +1583,204 @@ html {
 
   color: #b66cff;
 }
+
+/* =========================================================
+   HOMEPAGE — TYPOGRAPHY SYSTEM
+   ========================================================= */
+
+/* Navigation */
+.nav-links {
+  font-size: 16px;
+}
+
+/* Hero context */
+.hero-kicker {
+  font-size: 16px !important;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+}
+
+/* Hero statement — keep the scale we already like */
+.hero-copy-reference h1 {
+  font-size: clamp(58px, 4.8vw, 82px);
+  line-height: 1.04;
+}
+
+/* Hero supporting thought */
+.hero-description {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(235, 229, 255, 0.76);
+}
+
+/* Hero CTA */
+.hero-work-link {
+  font-size: 14px;
+}
+
+
+/* ---------- FEATURED WORK INTRO ---------- */
+
+.work-eyebrow {
+  font-size: 13px;
+}
+
+.work-title-row h2 {
+  font-size: clamp(62px, 6.4vw, 102px);
+}
+
+.work-title-row p {
+  max-width: 420px;
+  font-size: 23px;
+  line-height: 1.35;
+  color: rgba(230, 223, 245, 0.68);
+}
+
+.work-thread {
+  font-size: 12px;
+}
+
+
+/* ---------- PROJECTS ---------- */
+
+.world-project-number {
+  font-size: 12px;
+}
+
+/* Category */
+.world-project-type {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Project title */
+.world-project-info h3 {
+  font-size: clamp(38px, 3.4vw, 56px);
+  line-height: 1;
+}
+
+/* Project description */
+.world-project-info p {
+  max-width: 520px;
+
+  margin-top: 12px;
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: rgba(224, 222, 239, 0.72);
+}
+
+/* Explore project */
+.world-project-explore {
+  margin-top: 20px;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* ---------- ABOUT ---------- */
+
+.about-eyebrow {
+  font-size: 12px;
+}
+
+.about-copy h2 {
+  font-size: clamp(56px, 5vw, 80px);
+  line-height: 0.98;
+}
+
+.about-copy > p {
+  max-width: 680px;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: rgba(232, 229, 240, 0.72);
+}
+
+.about-copy > .about-intro {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.about-values span {
+  font-size: 13px;
+}
+
+.about-values small {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.about-meta {
+  font-size: 13px;
+}
+
+.about-actions {
+  font-size: 14px;
+}
+
+.about-primary-link {
+  font-size: 14px !important;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.reference-footer {
+  font-size: 12px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 720px) {
+
+  .hero-kicker {
+    font-size: 12px !important;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .work-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .work-title-row p {
+    font-size: 20px;
+  }
+
+  .world-project-type {
+  display: block;
+  margin-bottom: 12px;
+
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  color: #b66cff;
+}
+
+  .world-project-info p {
+    font-size: 15px;
+  }
+
+  .about-copy > p {
+    font-size: 16px;
+  }
+
+  .about-copy > .about-intro {
+    font-size: 18px;
+  }
+}

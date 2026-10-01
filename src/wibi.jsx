@@ -18,6 +18,12 @@ function Wibi() {
 ========================================= */}
 
 <section className="wibi-hero">
+  <div className="wibi-hero-visual" aria-hidden="true">
+  <img
+    src="/wibi/hero-img.png"
+    alt=""
+  />
+</div>
 
   <div className="wibi-hero-main">
 
@@ -167,6 +173,123 @@ function Wibi() {
 
 </aside>
 
+{/* =========================================
+    01 — THE PROBLEM
+========================================= */}
+
+<section className="wibi-section wibi-problem" id="wibi-problem">
+
+  <div className="wibi-section-label">
+    <span>01</span>
+    <span>THE PROBLEM</span>
+  </div>
+
+  <div className="wibi-problem-opening">
+
+    <p className="wibi-problem-kicker">
+      Dating apps made meeting people easier.
+    </p>
+
+    <h2>
+      But getting a match
+      <br />
+      wasn't the same as
+      <br />
+      making a connection.
+    </h2>
+
+  </div>
+
+
+  <div className="wibi-problem-snapshot">
+
+    <article>
+      <span>01</span>
+      <strong>Swipe fatigue</strong>
+      <p>
+        Repetitive evaluation and rejection made the experience
+        emotionally exhausting.
+      </p>
+    </article>
+
+    <article>
+      <span>02</span>
+      <strong>Low trust</strong>
+      <p>
+        Profile authenticity and unclear intentions made connection
+        difficult before conversation even began.
+      </p>
+    </article>
+
+    <article>
+      <span>03</span>
+      <strong>The meeting gap</strong>
+      <p>
+        Platforms supported matching extensively, but offered little
+        structure for moving comfortably into real-world interaction.
+      </p>
+    </article>
+
+  </div>
+
+
+  <details className="wibi-explore">
+
+    <summary className="wibi-explore-trigger">
+
+      <span className="wibi-explore-symbol">+</span>
+
+      <span className="wibi-explore-copy">
+        <strong>EXPLORE THE PROBLEM</strong>
+        <small>Context, framing & the opportunity space</small>
+      </span>
+
+      <span className="wibi-explore-arrow">↘</span>
+
+    </summary>
+
+
+    <div className="wibi-explore-content">
+
+      <div className="wibi-problem-depth">
+
+        <span>THE OPPORTUNITY</span>
+
+        <h3>
+          What if connection started with
+          something people genuinely wanted to do?
+        </h3>
+
+        <p>
+          Rather than beginning with profile evaluation, WIBI explores
+          whether shared activities and events can create context before
+          people are asked to evaluate one another.
+        </p>
+
+      </div>
+
+      <button
+        className="wibi-explore-close"
+        type="button"
+        onClick={(e) => {
+          e.currentTarget.closest("details").removeAttribute("open");
+        }}
+      >
+        <span>−</span>
+
+        <span>
+          <strong>CLOSE PROBLEM</strong>
+          <small>Return to case study</small>
+        </span>
+
+        <span>↗</span>
+      </button>
+
+    </div>
+
+  </details>
+
+</section>
 
       {/* RESEARCH */}
 <section className="wibi-section wibi-research" id="wibi-research">
@@ -211,29 +334,65 @@ function Wibi() {
 
 
   {/* RESEARCH STORY */}
-  <div className="wibi-research-story">
+  <details className="wibi-explore wibi-research-explore">
 
-    <div className="wibi-research-story-label">
-      <span>WHAT WE INVESTIGATED</span>
+  <summary className="wibi-explore-trigger">
+    <span className="wibi-explore-symbol">+</span>
+
+    <span className="wibi-explore-copy">
+      <strong>EXPLORE THE RESEARCH</strong>
+      <small>Literature review · survey · interviews</small>
+    </span>
+
+    <span className="wibi-explore-arrow">↘</span>
+  </summary>
+
+  <div className="wibi-explore-content">
+
+    <div className="wibi-research-story">
+
+      <div className="wibi-research-story-label">
+        <span>WHAT WE INVESTIGATED</span>
+      </div>
+
+      <div className="wibi-research-story-copy">
+        <p>
+          The research moved across three levels: what existing
+          literature says about digital dating, what broader patterns
+          appeared across users, and how those experiences felt in
+          individual stories.
+        </p>
+
+        <p>
+          Together, the methods helped us look beyond matching metrics
+          and examine trust, authenticity, emotional fatigue, shared
+          interests and the transition from online interaction to
+          meeting in person.
+        </p>
+      </div>
+
     </div>
 
-    <div className="wibi-research-story-copy">
-      <p>
-        The research moved across three levels: what existing
-        literature says about digital dating, what broader patterns
-        appeared across users, and how those experiences felt in
-        individual stories.
-      </p>
+    <button
+      className="wibi-explore-close"
+      type="button"
+      onClick={(e) => {
+        e.currentTarget.closest("details").removeAttribute("open");
+      }}
+    >
+      <span>−</span>
 
-      <p>
-        Together, the methods helped us look beyond matching metrics
-        and examine trust, authenticity, emotional fatigue, shared
-        interests and the transition from online interaction to
-        meeting in person.
-      </p>
-    </div>
+      <span>
+        <strong>CLOSE RESEARCH</strong>
+        <small>Return to key findings</small>
+      </span>
+
+      <span>↗</span>
+    </button>
 
   </div>
+
+</details>
 
 
   {/* SURVEY SNAPSHOT */}
@@ -436,6 +595,54 @@ function Wibi() {
           </div>
 
         </div>
+
+        <details className="wibi-explore">
+
+  <summary className="wibi-explore-trigger">
+    <span className="wibi-explore-symbol">+</span>
+
+    <span className="wibi-explore-copy">
+      <strong>EXPLORE THE STRUCTURE</strong>
+      <small>Full architecture & early wireframes</small>
+    </span>
+
+    <span className="wibi-explore-arrow">↘</span>
+  </summary>
+
+  <div className="wibi-explore-content">
+
+    <figure className="wibi-full-artifact">
+      <img
+        src="/wibi/information-architecture.jpg"
+        alt="Full WIBI information architecture"
+      />
+    </figure>
+
+    <figure className="wibi-full-artifact wibi-wireframe-artifact">
+      <img
+        src="/wibi/wireframes.jpg"
+        alt="WIBI early wireframes"
+      />
+    </figure>
+
+    <button
+      className="wibi-explore-close"
+      type="button"
+      onClick={(e) =>
+        e.currentTarget.closest("details").removeAttribute("open")
+      }
+    >
+      <span>−</span>
+      <span>
+        <strong>CLOSE STRUCTURE</strong>
+        <small>Return to case study</small>
+      </span>
+      <span>↗</span>
+    </button>
+
+  </div>
+
+</details>
 
       </section>
 
