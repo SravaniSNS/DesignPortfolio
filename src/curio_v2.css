@@ -1,0 +1,1871 @@
+/* =========================================================
+   CURIO V2
+   blended / atmospheric light direction
+   ========================================================= */
+
+.curio-v2 {
+  /* SURFACES */
+  --curio-paper: #e9e8ef;
+  --curio-paper-deep: #dedee9;
+
+  /* TEXT */
+  --curio-ink: #353954;
+  --curio-muted: #74778e;
+
+  /* SIGNAL FAMILY */
+  --curio-signal: #7472d8;
+  --curio-signal-soft: #aaa6df;
+
+  --curio-blue: #8eb9ca;
+  --curio-leaf: #a6bca8;
+  --curio-warm: #d5a994;
+
+  /* STRUCTURE */
+  --curio-line: rgba(70, 72, 104, 0.16);
+  --curio-line-soft: rgba(70, 72, 104, 0.055);
+
+  min-height: 100vh;
+
+  background:
+    /* violet atmosphere */
+    radial-gradient(
+      ellipse at 73% 26%,
+      rgba(158, 151, 216, 0.26),
+      transparent 35%
+    ),
+
+    /* blue atmosphere */
+    radial-gradient(
+      ellipse at 92% 68%,
+      rgba(142, 185, 202, 0.20),
+      transparent 31%
+    ),
+
+    /* soft green */
+    radial-gradient(
+      ellipse at 12% 77%,
+      rgba(166, 188, 168, 0.17),
+      transparent 28%
+    ),
+
+    /* warm trace */
+    radial-gradient(
+      ellipse at 39% 4%,
+      rgba(213, 169, 148, 0.13),
+      transparent 25%
+    ),
+
+    /* overall lavender-grey field */
+    linear-gradient(
+      135deg,
+      #eeecef 0%,
+      #e8e7ef 44%,
+      #e4e5ee 72%,
+      #e9e7ec 100%
+    );
+
+  color: var(--curio-ink);
+
+  font-family: "Inter", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.curio-v2-hero {
+  min-height: 100vh;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 32px clamp(28px, 5vw, 82px) 34px;
+}
+
+
+/* faint field grid */
+
+.curio-v2-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.25;
+
+  background:
+    linear-gradient(
+      var(--curio-line-soft) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--curio-line-soft) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent,
+      black 36%,
+      black 100%
+    );
+}
+
+
+/* subtle atmospheric haze */
+
+.curio-v2-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: 10%;
+  right: 7%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(116, 114, 216, 0.08),
+      rgba(142, 185, 202, 0.04) 45%,
+      transparent 70%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.curio-v2-nav {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid var(--curio-line);
+}
+
+.curio-v2-back {
+  color: var(--curio-ink);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.curio-v2-back:hover {
+  color: var(--curio-signal);
+
+  transform: translateX(-3px);
+}
+
+.curio-v2-identity {
+  display: flex;
+
+  gap: 14px;
+  align-items: center;
+}
+
+.curio-v2-identity strong {
+  color: var(--curio-signal);
+
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.curio-v2-identity > span {
+  width: 45px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--curio-signal-soft),
+      var(--curio-line)
+    );
+}
+
+.curio-v2-identity small {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   HERO GRID
+   ========================================================= */
+
+.curio-v2-hero-grid {
+  position: relative;
+  z-index: 2;
+
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+
+  gap: clamp(60px, 7vw, 130px);
+
+  align-items: center;
+
+  padding: 70px 0 55px;
+}
+
+
+/* =========================================================
+   HERO COPY
+   ========================================================= */
+
+.curio-v2-eyebrow {
+  display: block;
+
+  margin-bottom: 28px;
+
+  color: var(--curio-signal);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.curio-v2-hero-copy h1 {
+  margin: 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(68px, 7.5vw, 128px);
+  font-weight: 400;
+
+  line-height: 0.83;
+  letter-spacing: -0.055em;
+}
+
+.curio-v2-hero-copy h1 em {
+  color: #7775c9;
+
+  font-weight: 400;
+}
+
+.curio-v2-hero-copy > p {
+  max-width: 600px;
+
+  margin: 38px 0 0;
+
+  color: var(--curio-muted);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.curio-v2-hero-question {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+
+  gap: 30px;
+
+  max-width: 610px;
+
+  margin-top: 60px;
+  padding-top: 26px;
+
+  border-top: 1px solid var(--curio-line);
+}
+
+.curio-v2-hero-question > span {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.curio-v2-hero-question strong {
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(27px, 2.4vw, 39px);
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.curio-v2-hero-question strong em {
+  color: var(--curio-signal);
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   WORLD VISUAL
+   ========================================================= */
+
+.curio-v2-world {
+  width: min(100%, 680px);
+
+  aspect-ratio: 1;
+
+  position: relative;
+
+  justify-self: center;
+}
+
+
+/* =========================================================
+   ORBITS
+   ========================================================= */
+
+.curio-v2-world-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(70, 72, 104, 0.14);
+  border-radius: 50%;
+}
+
+.orbit-outer {
+  inset: 2%;
+
+  border-color: rgba(70, 72, 104, 0.16);
+}
+
+.orbit-context {
+  inset: 17%;
+
+  border-style: dashed;
+
+  border-color: rgba(116, 114, 216, 0.18);
+}
+
+.orbit-user {
+  inset: 33%;
+
+  border-color: rgba(116, 114, 216, 0.23);
+}
+
+.curio-v2-world-orbit > span {
+  position: absolute;
+
+  top: -10px;
+  left: 50%;
+
+  padding: 3px 10px;
+
+  transform: translateX(-50%);
+
+  background: rgba(233, 232, 239, 0.78);
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+
+  backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   SIGNALS
+   ========================================================= */
+
+.curio-v2-signal {
+  position: absolute;
+
+  display: flex;
+
+  gap: 9px;
+  align-items: center;
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+}
+
+.curio-v2-signal i {
+  width: 12px;
+  height: 12px;
+
+  display: block;
+
+  border: 2px solid var(--curio-signal);
+  border-radius: 50%;
+
+  background: rgba(233, 232, 239, 0.82);
+}
+
+
+/* PLACE */
+
+.signal-one {
+  top: 16%;
+  left: 9%;
+}
+
+.signal-one i {
+  border-color: var(--curio-leaf);
+
+  box-shadow:
+    0 0 0 6px rgba(166, 188, 168, 0.11);
+}
+
+
+/* TIME */
+
+.signal-two {
+  top: 27%;
+  right: 4%;
+}
+
+.signal-two i {
+  border-color: var(--curio-warm);
+
+  box-shadow:
+    0 0 0 6px rgba(213, 169, 148, 0.11);
+}
+
+
+/* INTEREST */
+
+.signal-three {
+  bottom: 20%;
+  left: 4%;
+}
+
+.signal-three i {
+  border-color: var(--curio-signal);
+
+  box-shadow:
+    0 0 0 6px rgba(116, 114, 216, 0.10);
+}
+
+
+/* ATTENTION */
+
+.signal-four {
+  right: 7%;
+  bottom: 18%;
+}
+
+.signal-four i {
+  border-color: var(--curio-blue);
+
+  box-shadow:
+    0 0 0 6px rgba(142, 185, 202, 0.11);
+}
+
+
+/* =========================================================
+   CURIO CORE
+   ========================================================= */
+
+.curio-v2-core {
+  width: 190px;
+  height: 190px;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(116, 114, 216, 0.30);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 45% 40%,
+      rgba(170, 166, 223, 0.20),
+      rgba(142, 185, 202, 0.08) 40%,
+      rgba(116, 114, 216, 0.035) 65%,
+      transparent 72%
+    );
+
+  box-shadow:
+    0 0 70px rgba(116, 114, 216, 0.07);
+
+  text-align: center;
+}
+
+.curio-v2-core small {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+}
+
+.curio-v2-core strong {
+  margin-top: 10px;
+
+  color: var(--curio-signal);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.curio-v2-core > span {
+  margin-top: 6px;
+
+  color: var(--curio-ink);
+
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   OUTPUT
+   ========================================================= */
+
+.curio-v2-output {
+  position: absolute;
+
+  left: 50%;
+  bottom: 6%;
+
+  display: flex;
+
+  gap: 12px;
+  align-items: center;
+
+  transform: translateX(-50%);
+
+  padding: 10px 18px;
+
+  border: 1px solid rgba(70, 72, 104, 0.15);
+  border-radius: 999px;
+
+  background: rgba(232, 232, 240, 0.72);
+
+  backdrop-filter: blur(10px);
+
+  color: var(--curio-ink);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  box-shadow:
+    0 12px 30px rgba(70, 72, 104, 0.05);
+}
+
+.curio-v2-output i {
+  color: var(--curio-signal);
+
+  font-style: normal;
+}
+
+
+/* =========================================================
+   PAPER NOTE
+   ========================================================= */
+
+.curio-v2-paper-note {
+  position: absolute;
+
+  right: -1%;
+  top: 54%;
+
+  display: flex;
+
+  gap: 10px;
+
+  padding: 18px 20px;
+
+  transform: rotate(3deg);
+
+  border: 1px solid rgba(70, 72, 104, 0.10);
+
+  background: rgba(239, 237, 244, 0.92);
+
+  box-shadow:
+    0 15px 35px rgba(70, 72, 104, 0.08);
+
+  backdrop-filter: blur(8px);
+}
+
+.curio-v2-paper-note > span {
+  color: var(--curio-signal-soft);
+
+  font-size: 18px;
+}
+
+.curio-v2-paper-note p {
+  margin: 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.curio-v2-paper-note p em {
+  color: var(--curio-signal);
+}
+
+
+/* =========================================================
+   FOUND MARKS
+   little fragments from the world
+   ========================================================= */
+
+.curio-v2-found-mark {
+  position: absolute;
+
+  display: grid;
+  place-items: center;
+
+  opacity: 0.62;
+
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.found-mark-one {
+  top: 8%;
+  right: 22%;
+
+  color: var(--curio-leaf);
+
+  font-size: 22px;
+
+  transform: rotate(12deg);
+}
+
+.found-mark-two {
+  right: 25%;
+  bottom: 10%;
+
+  color: var(--curio-warm);
+
+  font-size: 25px;
+
+  transform: rotate(-12deg);
+}
+
+.found-mark-three {
+  top: 42%;
+  left: 7%;
+
+  color: var(--curio-signal-soft);
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   FLOATING NOTES
+   ========================================================= */
+
+.curio-v2-world-note {
+  position: absolute;
+  z-index: 3;
+
+  color: rgba(70, 72, 104, 0.55);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 16px;
+  font-style: italic;
+}
+
+.note-look {
+  top: 20%;
+  left: 47%;
+
+  transform: rotate(-7deg);
+}
+
+.note-why {
+  top: 35%;
+  right: 4%;
+
+  transform: rotate(5deg);
+}
+
+.note-maybe {
+  bottom: 18%;
+  left: 45%;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.curio-v2-hero-footer {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 22px;
+
+  border-top: 1px solid var(--curio-line);
+}
+
+.curio-v2-hero-footer > div {
+  display: flex;
+
+  gap: 30px;
+}
+
+.curio-v2-hero-footer span,
+.curio-v2-hero-footer a {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.curio-v2-hero-footer a {
+  color: var(--curio-signal);
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.curio-v2-hero-footer a:hover {
+  color: var(--curio-ink);
+
+  transform: translateY(2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+  .curio-v2-identity small,
+  .curio-v2-world-note {
+    display: none;
+  }
+
+  .curio-v2-hero-grid {
+    grid-template-columns: 1fr;
+
+    gap: 70px;
+  }
+
+  .curio-v2-world {
+    width: min(100%, 600px);
+  }
+
+  .curio-v2-hero-question {
+    grid-template-columns: 1fr;
+  }
+
+  .curio-v2-paper-note {
+    right: 0;
+  }
+
+  .curio-v2-hero-footer {
+    gap: 30px;
+
+    align-items: flex-end;
+  }
+
+  .curio-v2-hero-footer > div {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+}
+
+
+@media (max-width: 620px) {
+
+  .curio-v2-hero {
+    padding:
+      24px
+      22px
+      28px;
+  }
+
+  .curio-v2-identity > span {
+    display: none;
+  }
+
+  .curio-v2-hero-copy h1 {
+    font-size: clamp(58px, 19vw, 84px);
+  }
+
+  .curio-v2-hero-copy > p {
+    font-size: 16px;
+  }
+
+  .curio-v2-world {
+    width: 100%;
+  }
+
+  .curio-v2-core {
+    width: 150px;
+    height: 150px;
+  }
+
+  .curio-v2-core strong {
+    font-size: 30px;
+  }
+
+  .curio-v2-paper-note {
+    top: 57%;
+
+    padding: 14px 16px;
+  }
+
+  .curio-v2-paper-note p {
+    font-size: 16px;
+  }
+
+  .curio-v2-output {
+    bottom: 1%;
+
+    padding: 8px 12px;
+
+    font-size: 14px;
+  }
+
+}
+
+/* =========================================================
+   SHARED SECTION
+   ========================================================= */
+
+.curio-v2-section {
+  position: relative;
+
+  padding:
+    130px
+    clamp(28px, 7vw, 120px);
+
+  color: var(--curio-ink);
+}
+
+.curio-v2-section-label {
+  display: flex;
+
+  gap: 18px;
+  align-items: center;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid var(--curio-line);
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-section-label span:first-child {
+  color: var(--curio-signal);
+}
+
+
+/* =========================================================
+   01 — THE GAP
+   ========================================================= */
+
+.curio-v2-gap {
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 78% 28%,
+      rgba(166,188,168,.12),
+      transparent 27%
+    ),
+    radial-gradient(
+      ellipse at 20% 72%,
+      rgba(142,185,202,.10),
+      transparent 25%
+    );
+}
+
+
+/* INTRO */
+
+.curio-v2-gap-intro {
+  max-width: 1100px;
+
+  margin-top: 90px;
+}
+
+.curio-v2-gap-intro > span {
+  color: var(--curio-signal);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.curio-v2-gap-intro h2 {
+  margin: 28px 0 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(60px, 7vw, 112px);
+  font-weight: 400;
+
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.curio-v2-gap-intro h2 em {
+  color: #7775c9;
+
+  font-weight: 400;
+}
+
+.curio-v2-gap-intro p {
+  max-width: 590px;
+
+  margin: 38px 0 0;
+
+  color: var(--curio-muted);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   THE MOMENT
+   ========================================================= */
+
+.curio-v2-moment {
+  display: grid;
+
+  grid-template-columns:
+    1fr .45fr
+    1fr .45fr
+    1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-top: 120px;
+}
+
+.curio-v2-moment-step {
+  min-height: 310px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  padding: 32px;
+
+  border: 1px solid var(--curio-line);
+  border-radius: 26px;
+
+  background:
+    rgba(235,234,241,.42);
+
+  backdrop-filter: blur(8px);
+}
+
+.curio-v2-moment-number {
+  position: absolute;
+
+  top: 22px;
+  right: 25px;
+
+  color: rgba(70,72,104,.28);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 34px;
+}
+
+.curio-v2-moment-symbol {
+  position: absolute;
+
+  top: 45%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: var(--curio-signal);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 74px;
+  font-weight: 400;
+}
+
+.curio-v2-moment-step small {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-moment-step strong {
+  margin-top: 12px;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(25px, 2vw, 34px);
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+
+/* individual moments */
+
+.moment-notice {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(166,188,168,.20),
+      transparent 35%
+    ),
+    rgba(235,234,241,.45);
+}
+
+.moment-wonder {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(170,166,223,.22),
+      transparent 35%
+    ),
+    rgba(235,234,241,.45);
+}
+
+.moment-pass {
+  opacity: .72;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(235,234,241,.45),
+      rgba(220,220,229,.28)
+    );
+}
+
+.moment-pass .curio-v2-moment-symbol {
+  color: var(--curio-muted);
+}
+
+
+/* =========================================================
+   CONNECTING MOMENTS
+   ========================================================= */
+
+.curio-v2-moment-line {
+  position: relative;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(116,114,216,.15),
+      rgba(116,114,216,.6),
+      rgba(116,114,216,.15)
+    );
+}
+
+.curio-v2-moment-line::after {
+  content: "→";
+
+  position: absolute;
+
+  right: -4px;
+  top: 50%;
+
+  transform: translateY(-52%);
+
+  color: var(--curio-signal);
+
+  font-size: 20px;
+}
+
+.curio-v2-moment-line span {
+  position: absolute;
+
+  left: 50%;
+  bottom: 13px;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  color: var(--curio-muted);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 14px;
+  font-style: italic;
+}
+
+.moment-line-fade {
+  opacity: .48;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(70,72,104,.28) 0 4px,
+      transparent 4px 10px
+    );
+}
+
+
+/* =========================================================
+   BREAK
+   ========================================================= */
+
+.curio-v2-gap-break {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  gap: 35px;
+  align-items: center;
+
+  margin: 80px 0;
+}
+
+.curio-v2-gap-break-note {
+  color: var(--curio-muted);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 17px;
+  font-style: italic;
+}
+
+.curio-v2-gap-break-line {
+  position: relative;
+
+  height: 1px;
+
+  overflow: hidden;
+
+  background:
+    rgba(70,72,104,.12);
+}
+
+.curio-v2-gap-break-line i {
+  width: 28%;
+
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--curio-warm),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   OPPORTUNITY
+   ========================================================= */
+
+.curio-v2-gap-question {
+  display: grid;
+  grid-template-columns: .28fr 1fr;
+
+  gap: 60px;
+
+  align-items: start;
+
+  padding: 55px 0 20px;
+
+  border-top: 1px solid var(--curio-line);
+}
+
+.curio-v2-gap-question > span {
+  color: var(--curio-signal);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-gap-question > p {
+  max-width: 900px;
+
+  margin: 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(38px, 4.2vw, 67px);
+  font-weight: 400;
+
+  line-height: .98;
+}
+
+.curio-v2-gap-question > p em {
+  color: #7775c9;
+
+  font-weight: 400;
+}
+
+.curio-v2-gap-shift {
+  grid-column: 2;
+
+  display: flex;
+
+  gap: 22px;
+  align-items: center;
+
+  margin-top: 30px;
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .09em;
+}
+
+.curio-v2-gap-shift i {
+  color: var(--curio-signal-soft);
+
+  font-size: 20px;
+  font-style: normal;
+}
+
+.curio-v2-gap-shift strong {
+  padding: 9px 15px;
+
+  border: 1px solid rgba(116,114,216,.25);
+  border-radius: 999px;
+
+  background:
+    rgba(170,166,223,.12);
+
+  color: var(--curio-signal);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .curio-v2-section {
+    padding:
+      100px
+      28px;
+  }
+
+  .curio-v2-moment {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .curio-v2-moment-line {
+    width: 1px;
+    height: 50px;
+
+    justify-self: center;
+  }
+
+  .curio-v2-moment-line::after {
+    content: "↓";
+
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+  }
+
+  .curio-v2-moment-line span {
+    left: 20px;
+    bottom: 50%;
+
+    transform: translateY(50%);
+
+    white-space: nowrap;
+  }
+
+  .curio-v2-gap-question {
+    grid-template-columns: 1fr;
+  }
+
+  .curio-v2-gap-shift {
+    grid-column: 1;
+
+    flex-wrap: wrap;
+  }
+
+}
+
+/* =========================================================
+   SHARED SECTION
+   ========================================================= */
+
+.curio-v2-section {
+  position: relative;
+
+  padding:
+    130px
+    clamp(28px, 7vw, 120px);
+
+  color: var(--curio-ink);
+}
+
+.curio-v2-section-label {
+  display: flex;
+
+  gap: 18px;
+  align-items: center;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid var(--curio-line);
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-section-label span:first-child {
+  color: var(--curio-signal);
+}
+
+
+/* =========================================================
+   01 — THE GAP
+   ========================================================= */
+
+.curio-v2-gap {
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 78% 28%,
+      rgba(166,188,168,.12),
+      transparent 27%
+    ),
+    radial-gradient(
+      ellipse at 20% 72%,
+      rgba(142,185,202,.10),
+      transparent 25%
+    );
+}
+
+
+/* INTRO */
+
+.curio-v2-gap-intro {
+  max-width: 1100px;
+
+  margin-top: 90px;
+}
+
+.curio-v2-gap-intro > span {
+  color: var(--curio-signal);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.curio-v2-gap-intro h2 {
+  margin: 28px 0 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(60px, 7vw, 112px);
+  font-weight: 400;
+
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.curio-v2-gap-intro h2 em {
+  color: #7775c9;
+
+  font-weight: 400;
+}
+
+.curio-v2-gap-intro p {
+  max-width: 590px;
+
+  margin: 38px 0 0;
+
+  color: var(--curio-muted);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   THE MOMENT
+   ========================================================= */
+
+.curio-v2-moment {
+  display: grid;
+
+  grid-template-columns:
+    1fr .45fr
+    1fr .45fr
+    1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-top: 120px;
+}
+
+.curio-v2-moment-step {
+  min-height: 310px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  padding: 32px;
+
+  border: 1px solid var(--curio-line);
+  border-radius: 26px;
+
+  background:
+    rgba(235,234,241,.42);
+
+  backdrop-filter: blur(8px);
+}
+
+.curio-v2-moment-number {
+  position: absolute;
+
+  top: 22px;
+  right: 25px;
+
+  color: rgba(70,72,104,.28);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 34px;
+}
+
+.curio-v2-moment-symbol {
+  position: absolute;
+
+  top: 45%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: var(--curio-signal);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 74px;
+  font-weight: 400;
+}
+
+.curio-v2-moment-step small {
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-moment-step strong {
+  margin-top: 12px;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(25px, 2vw, 34px);
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+
+/* individual moments */
+
+.moment-notice {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(166,188,168,.20),
+      transparent 35%
+    ),
+    rgba(235,234,241,.45);
+}
+
+.moment-wonder {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(170,166,223,.22),
+      transparent 35%
+    ),
+    rgba(235,234,241,.45);
+}
+
+.moment-pass {
+  opacity: .72;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(235,234,241,.45),
+      rgba(220,220,229,.28)
+    );
+}
+
+.moment-pass .curio-v2-moment-symbol {
+  color: var(--curio-muted);
+}
+
+
+/* =========================================================
+   CONNECTING MOMENTS
+   ========================================================= */
+
+.curio-v2-moment-line {
+  position: relative;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(116,114,216,.15),
+      rgba(116,114,216,.6),
+      rgba(116,114,216,.15)
+    );
+}
+
+.curio-v2-moment-line::after {
+  content: "→";
+
+  position: absolute;
+
+  right: -4px;
+  top: 50%;
+
+  transform: translateY(-52%);
+
+  color: var(--curio-signal);
+
+  font-size: 20px;
+}
+
+.curio-v2-moment-line span {
+  position: absolute;
+
+  left: 50%;
+  bottom: 13px;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  color: var(--curio-muted);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 14px;
+  font-style: italic;
+}
+
+.moment-line-fade {
+  opacity: .48;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(70,72,104,.28) 0 4px,
+      transparent 4px 10px
+    );
+}
+
+
+/* =========================================================
+   BREAK
+   ========================================================= */
+
+.curio-v2-gap-break {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  gap: 35px;
+  align-items: center;
+
+  margin: 80px 0;
+}
+
+.curio-v2-gap-break-note {
+  color: var(--curio-muted);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: 17px;
+  font-style: italic;
+}
+
+.curio-v2-gap-break-line {
+  position: relative;
+
+  height: 1px;
+
+  overflow: hidden;
+
+  background:
+    rgba(70,72,104,.12);
+}
+
+.curio-v2-gap-break-line i {
+  width: 28%;
+
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--curio-warm),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   OPPORTUNITY
+   ========================================================= */
+
+.curio-v2-gap-question {
+  display: grid;
+  grid-template-columns: .28fr 1fr;
+
+  gap: 60px;
+
+  align-items: start;
+
+  padding: 55px 0 20px;
+
+  border-top: 1px solid var(--curio-line);
+}
+
+.curio-v2-gap-question > span {
+  color: var(--curio-signal);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.curio-v2-gap-question > p {
+  max-width: 900px;
+
+  margin: 0;
+
+  color: var(--curio-ink);
+
+  font-family: "Fraunces", Georgia, serif;
+
+  font-size: clamp(38px, 4.2vw, 67px);
+  font-weight: 400;
+
+  line-height: .98;
+}
+
+.curio-v2-gap-question > p em {
+  color: #7775c9;
+
+  font-weight: 400;
+}
+
+.curio-v2-gap-shift {
+  grid-column: 2;
+
+  display: flex;
+
+  gap: 22px;
+  align-items: center;
+
+  margin-top: 30px;
+
+  color: var(--curio-muted);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .09em;
+}
+
+.curio-v2-gap-shift i {
+  color: var(--curio-signal-soft);
+
+  font-size: 20px;
+  font-style: normal;
+}
+
+.curio-v2-gap-shift strong {
+  padding: 9px 15px;
+
+  border: 1px solid rgba(116,114,216,.25);
+  border-radius: 999px;
+
+  background:
+    rgba(170,166,223,.12);
+
+  color: var(--curio-signal);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .curio-v2-section {
+    padding:
+      100px
+      28px;
+  }
+
+  .curio-v2-moment {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .curio-v2-moment-line {
+    width: 1px;
+    height: 50px;
+
+    justify-self: center;
+  }
+
+  .curio-v2-moment-line::after {
+    content: "↓";
+
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+  }
+
+  .curio-v2-moment-line span {
+    left: 20px;
+    bottom: 50%;
+
+    transform: translateY(50%);
+
+    white-space: nowrap;
+  }
+
+  .curio-v2-gap-question {
+    grid-template-columns: 1fr;
+  }
+
+  .curio-v2-gap-shift {
+    grid-column: 1;
+
+    flex-wrap: wrap;
+  }
+
+}

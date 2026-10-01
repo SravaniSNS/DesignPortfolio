@@ -2,7 +2,7 @@ import './App.css'
 import Beacon from './beacon'
 import Wibi from './wibi_v2'
 import Reframe from './reframe_v2'
-import Curio from './curio'
+import Curio from './curio_v2'
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
