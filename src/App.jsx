@@ -300,7 +300,7 @@ function Home() {
 
     <p className="about-intro">
       I'm a UX and interaction designer with a background in computer science.
-      I'm curious about the systems underneath everyday experiences — how
+      I'm curious about the systems underneath everyday experiences how
       people behave, what shapes their choices, and how technology quietly
       changes the way we interact.
     </p>
